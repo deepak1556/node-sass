@@ -34,6 +34,7 @@ var sampleCssMapOutputPath = path.join(__dirname, '../sample.css.map');
 
 describe('cli', function() {
   it('should read data from stdin', function(done) {
+    this.timeout(6000);
     var src = fs.createReadStream(sampleScssPath);
     var emitter = spawn(cliPath, ['--stdout']);
 
@@ -47,6 +48,7 @@ describe('cli', function() {
   });
 
   it('should print help when run with no arguments', function(done) {
+    this.timeout(6000);
     var env = assign(process.env, { isTTY: true });
     exec('node ' + cliPath, {
       env: env
@@ -56,6 +58,7 @@ describe('cli', function() {
   });
 
   it('should compile sample.scss as sample.css', function(done) {
+    this.timeout(6000);
     var env = assign(process.env, { isTTY: true });
     var resultPath = path.join(__dirname, 'sample.css');
 
@@ -73,6 +76,7 @@ describe('cli', function() {
   });
 
   it('should compile sample.scss to ../out.css', function(done) {
+    this.timeout(6000);
     var env = assign(process.env, { isTTY: true });
     var resultPath = path.resolve(__dirname, '../out.css');
 
